@@ -1,0 +1,21 @@
+{
+  "name": "stream-operations",
+  "version": "0.0.1",
+  "description": "Collection of stream operation utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": {
+    "name": "Roel Berger",
+    "email": "berger.roel@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruleb/stream-operations.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 4.0.0"
+  }
+}
