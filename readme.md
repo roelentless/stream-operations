@@ -13,7 +13,7 @@ npm install stream-operations --save
 Usage
 -----
 ```
-var StreamOperations = require('stream-operations');
+var sop = require('stream-operations');
 ```
 
 Operations
@@ -25,7 +25,7 @@ Default flush after 1000ms or size 1000.
 
 ```
 aReadable
-.pipe(StreamOperations.bufferWithTimeOrSize(100, 100))  // Flush buffer after 100 milliseconds or when 100 objects are collected
+.pipe(sop.bufferWithTimeOrSize(100, 100))  // Flush buffer after 100 milliseconds or when 100 objects are collected
 ...
 ```
 
@@ -34,7 +34,7 @@ Transform an object by calling the handler for every object
 
 ```
 aReadable
-.pipe(StreamOperations.map(d => d.id)) 
+.pipe(sop.map(d => d.id)) 
 ...
 ```
 
@@ -43,7 +43,7 @@ Transform an object by calling the handler for every object
 
 ```
 aReadable
-.pipe(StreamOperations.filter(d => true)) 
+.pipe(sop.filter(d => true)) 
 ...
 ```
 
@@ -52,10 +52,10 @@ Transform an object by calling the handler for every object, which can be asynch
 
 ```
 aReadable
-.pipe(StreamOperations.flatMap((data, enc, done) => {
+.pipe(sop.flatMap((data, enc, done) => {
   done(null, data)
 })) 
-.pipe(StreamOperations.flatMap(data => {
+.pipe(sop.flatMap(data => {
   return new Promise((resolve, reject) => {
     resolve(data) // or reject
   })
@@ -68,7 +68,7 @@ Reduce a stream to a single value, which is sent through the stream when the pre
 
 ```
 aReadable
-.pipe(StreamOperations.reduce((data, enc, previousValue) => previousValue++), 0) 
+.pipe(sop.reduce((data, enc, previousValue) => previousValue++), 0) 
 ...
 ```
 
@@ -77,7 +77,7 @@ Do something for every object
 
 ```
 aReadable
-.pipe(StreamOperations.each(d => console.log(d))) 
+.pipe(sop.each(d => console.log(d))) 
 ...
 ```
 
@@ -92,7 +92,7 @@ Options can be anything provided by the Stream.Transform interface, by default:
 
 Extending
 ---------
-When calling `StreamOperations.extend()` once in your code, node streams are extended with most of the stream operations.
+When calling `sop.extend()` once in your code, node streams are extended with most of the stream operations.
 
 **Use this with caution!**
 
